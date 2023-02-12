@@ -5,16 +5,14 @@ import carRace.transport.Car;
 
 import java.util.*;
 
-public abstract class Transport {
+public abstract class Transport implements Comparable {
     private final String brand;
     private final String model;
     private final double engineVolume;
     private final List<Driver<?>> drivers = new ArrayList<>();
+
     private final List<Mechanic<?>> mechanics = new ArrayList<>();
-    private final List<Sponsor> sponsors = new ArrayList<>();
-
-    private static Map<Car, Set<Mechanic>> carMechanic = new HashMap<>();
-
+    //private final Set<Mechanic<?>> mechanics = new HashSet<>();
 
     public Transport(String brand,
                      String model,
@@ -57,42 +55,32 @@ public abstract class Transport {
     public List<Driver<?>> getDrivers() {
         return drivers;
     }
-
-    public List<Mechanic<?>> getMechanics() {
-        return mechanics;
-    }
-
-    public List<Sponsor> getSponsors() {
-        return sponsors;
-    }
-
-    /**
-     * методы
-     **/
-    public abstract void start();
-
-    public abstract void finish();
-
-    public abstract void printType();
-
-    public abstract boolean service();
-
     public void addDrivers(Driver<?> ...drivers) {
         this.drivers.addAll(Arrays.asList(drivers));
     }
 
-    public void addMechanic(Mechanic<?> ... mechanics) {
-        this.mechanics.addAll(Arrays.asList(mechanics));
+    public List<Mechanic<?>> getMechanics() {
+        return mechanics;
     }
+    //public Set<Mechanic<?>> getMechanics() {return mechanics;}
 
-    public void addSponsors(Sponsor ...sponsors) {
-        this.sponsors.addAll(Arrays.asList(sponsors));
-    }
+    public void addMechanic(Mechanic<?> ... mechanics) { this.mechanics.addAll(Arrays.asList(mechanics));}
+  // public void addMechanic(Mechanic<?> ... mechanics) { this.mechanics.addAll(Arrays.asList(mechanics));}
 
-    public abstract void repair();
+
 
     @Override
     public String toString() {
         return brand + '\'' + model + '\'';
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
     }
 }
