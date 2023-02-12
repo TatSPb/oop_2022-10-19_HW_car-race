@@ -14,7 +14,6 @@ import java.util.Map;
 import java.util.Set;
 
 
-
 public class Main {
     @Override
     public String toString() {
@@ -55,6 +54,7 @@ public class Main {
         audiA8.addMechanic(bb);
 //        audiA8.addSponsors(redBull);
 
+
 //
 //        kamaz5460.addDrivers(kiv);
         kamaz5460.addMechanic(dd);
@@ -63,12 +63,17 @@ public class Main {
 //        hyundaiA201.addDrivers(niv);
         hyundaiA201.addMechanic(ww);
 //        hyundaiA201.addSponsors(vodafone, puma);
-//
+
+       //System.out.println( "механик " + Transport.getMechanics());
+
+
+
         Map<Transport, Mechanic> carMechanic = new HashMap<>();
         carMechanic.put (audiA8, bb);
         carMechanic.put (audiA8, bb);
         carMechanic.put (kamaz5460, dd);
         carMechanic.put (hyundaiA201, ww);
+
 
         System.out.println(carMechanic);
 

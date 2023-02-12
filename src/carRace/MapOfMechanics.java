@@ -50,7 +50,7 @@ public class MapOfMechanics {
         mapOfCarMechanics3.putAll(mapOfCarMechanicsScoda);
         System.out.println(mapOfCarMechanics3);
 
-        System.out.println("ВАРИАНТ 2 - не получается цикл\n ");
+        System.out.println("ВАРИАНТ 2 - не получается цикл по добавлению в МАПу\n ");
         audiA8.addMechanic(bb);
         audiA8.addMechanic(pp);
         scodaFabia.addMechanic(vv);
@@ -60,18 +60,18 @@ public class MapOfMechanics {
         hyundaiA201.addMechanic(ww);
         hyundaiA201.addMechanic(ss);
 
-//        Map<Transport, Mechanic> mapOfCarMechanicsVar2 = new HashMap<>();
-//        for (Mechanic<?> i : Arrays.asList(Mechanic<Car>)) {
-//         audiA8.getMechanics();
-//         scodaFabia.getMechanics();
-//         mapOfCarMechanicsVar2.put(audiA8, i);
-//         mapOfCarMechanicsVar2.put(scodaFabia, i);
-//        }
-//        System.out.println(mapOfCarMechanicsVar2);
+        Map<Transport, Mechanic> mapOfCarMechanicsVar2 = new HashMap<>();
+        for (Mechanic<?> i : Arrays.asList(Mechanic<Car>)) {
+         audiA8.getMechanics();
+         scodaFabia.getMechanics();
+         mapOfCarMechanicsVar2.put(audiA8, i);
+         mapOfCarMechanicsVar2.put(scodaFabia, i);
+        }
+        System.out.println(mapOfCarMechanicsVar2);
 
 
 
-        System.out.println("\nВАРИАНТ 3 - как положить механиков в Map? ");
+        System.out.println("\nВАРИАНТ 3.1 - список есть, но без Мапа. Как положить его в Map? ");
         Map<Transport, Mechanic> mapOfCarMechanicsVar33 = new HashMap<>();
         for (var s : Arrays.asList(
                 audiA8.getBrand() + " " + audiA8.getModel() + " " + audiA8.getMechanics(),
@@ -81,24 +81,44 @@ public class MapOfMechanics {
         )) {
             System.out.println(s);
 
+            System.out.println("\nВАРИАНТ 3.2 ");
+            Map<Transport, Mechanic> mapOfCarMechanicsVar34 = new HashMap<>();
+            for (var у : Transport) {
+                audiA8.addMechanic(pp);
+                scodaFabia.addMechanic(vv);
+                mapOfCarMechanicsVar33.put (audiA8, audiA8.getMechanics());
+                mapOfCarMechanicsVar33.put (scodaFabia, scodaFabia.getMechanics());
+            }
+
+                System.out.println(mapOfCarMechanicsVar34);
+
 
             for (Map.Entry<Transport, Mechanic> entry : mapOfCarMechanicsVar33.entrySet()) {
                 if (!mapOfCarMechanicsVar33.isEmpty()) {
                     System.out.println(entry.getKey() + " : " + entry.getValue());
                 } else
-                    System.out.println("Map пустой");
+                    System.out.println("Мапа пустая");
             }
         }
 
-
-        System.out.println("\nВАРИАНТ 4 - как положить механиков в Map? В значение никак не получается положить audiA8.getMechanics()");
-        Map<Transport, Mechanic> mapOfCarMechanicsVar44 = new HashMap<>();
-        //mapOfCarMechanicsVar44.put(audiA8, audiA8.getMechanics());
-        //mapOfCarMechanicsVar44.put(kamaz5460, kamaz5460.getMechanics());
-
-        for (Map.Entry<Transport, Mechanic> entry : mapOfCarMechanicsVar44.entrySet()) {
+        for (Map.Entry<Transport, Mechanic> entry : mapOfCarMechanicsVar33.entrySet()) {
             System.out.println(entry.getKey() + " : " + entry.getValue());
         }
+
+        System.out.println("\nВАРИАНТ 4 ");
+        Map<Transport, Mechanic> mapOfCarMechanicsVar44 = new HashMap<>();
+        mapOfCarMechanicsVar44.put (audiA8, bb);
+        mapOfCarMechanicsVar44.put (audiA8, bb);
+        mapOfCarMechanicsVar44.put (kamaz5460, dd);
+        mapOfCarMechanicsVar44.put (hyundaiA201, ww);
+        System.out.println(mapOfCarMechanicsVar44);
+
+        for(Map.Entry<Transport, Mechanic> item : mapOfCarMechanicsVar44.entrySet()){
+
+            System.out.printf("Key: %s  Value: %s \n", item.getKey(), item.getValue().getName() + ' ' + item.getValue().getSurname());
+        }
+
+
     }
 }
 
