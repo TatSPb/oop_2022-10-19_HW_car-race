@@ -1,7 +1,6 @@
 package carRace;
 
 import carRace.drivers.Driver;
-import carRace.transport.Car;
 
 import java.util.*;
 
@@ -11,8 +10,8 @@ public abstract class Transport implements Comparable {
     private final double engineVolume;
     private final List<Driver<?>> drivers = new ArrayList<>();
 
-    private final List<Mechanic<?>> mechanics = new ArrayList<>();
-    //private final Set<Mechanic<?>> mechanics = new HashSet<>();
+    //private final List<Mechanic<?>> mechanics = new ArrayList<>();
+    private final Set<Mechanic<?>> mechanics = new HashSet<>();
 
     public Transport(String brand,
                      String model,
@@ -55,18 +54,20 @@ public abstract class Transport implements Comparable {
     public List<Driver<?>> getDrivers() {
         return drivers;
     }
-    public void addDrivers(Driver<?> ...drivers) {
+
+    public void addDrivers(Driver<?>... drivers) {
         this.drivers.addAll(Arrays.asList(drivers));
     }
 
-    public List<Mechanic<?>> getMechanics() {
+    //public List<Mechanic<?>> getMechanics() {return mechanics;}
+    public Set<Mechanic<?>> getMechanics() {
         return mechanics;
     }
-    //public Set<Mechanic<?>> getMechanics() {return mechanics;}
 
-    public void addMechanic(Mechanic<?> ... mechanics) { this.mechanics.addAll(Arrays.asList(mechanics));}
-  // public void addMechanic(Mechanic<?> ... mechanics) { this.mechanics.addAll(Arrays.asList(mechanics));}
-
+    //public void addMechanic(Mechanic<?> ... mechanics) { this.mechanics.addAll(Arrays.asList(mechanics));}
+    public void addMechanic(Mechanic<?>... mechanics) {
+        this.mechanics.addAll(Arrays.asList(mechanics));
+    }
 
 
     @Override

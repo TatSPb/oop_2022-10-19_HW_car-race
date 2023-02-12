@@ -1,6 +1,9 @@
 package carRace;
 
 import carRace.carParameters.TypeOfBody;
+import carRace.carParameters.TypeOfCapacity;
+import carRace.carParameters.TypeOfWeight;
+import carRace.transport.Bus;
 import carRace.transport.Car;
 import carRace.transport.Truck;
 
@@ -14,11 +17,15 @@ public class MapOfMechanics {
         Mechanic<Car> pp = new Mechanic<>("Петр", "Петров", "Компания2");
         Mechanic<Car> vv = new Mechanic<>("Владлен", "Волосов", "Компания3");
         Mechanic<Car> mm = new Mechanic<>("Марк", "Захаров", "Компания4");
-        Mechanic<Truck> dd = new Mechanic<>("Дэвид", "Дин", "Бест Рейсинг");
-        Mechanic<Transport> ww = new Mechanic<>("Вальтер", "Валлер", "Райсинг Рипеа");
+        Mechanic<Truck> dd = new Mechanic<>("Дэвид", "Дин", "Компания5");
+        Mechanic<Truck> ee = new Mechanic<>("Егор", "Егоров", "Компания6");
+        Mechanic<Bus> ww = new Mechanic<>("Вальтер", "Валлер", "Компания7");
+        Mechanic<Bus> ss = new Mechanic<>("Стас", "Стасов", "Компания8");
 
         Car audiA8 = new Car("Audi", "A8", 3.0, TypeOfBody.COUPE);
         Car scodaFabia = new Car("Scoda", "Fabia", 1.6, carRace.carParameters.TypeOfBody.SEDAN);
+        Truck kamaz5460 = new Truck("Kamaz", "5460", 12.0, TypeOfWeight.N2);
+        Bus hyundaiA201 = new Bus("Hyundai", "A201", 13.00, TypeOfCapacity.LARGE);
 
         System.out.println("ВАРИАНТ 1 ");
 
@@ -48,41 +55,50 @@ public class MapOfMechanics {
         audiA8.addMechanic(pp);
         scodaFabia.addMechanic(vv);
         scodaFabia.addMechanic(mm);
+        kamaz5460.addMechanic(dd);
+        kamaz5460.addMechanic(ee);
+        hyundaiA201.addMechanic(ww);
+        hyundaiA201.addMechanic(ss);
 
-        Map<Transport, Mechanic> mapOfCarMechanicsVar2 = new HashMap<>();
-        for (Mechanic<?> i : Arrays.asList(Mechanic<Car>)) {
-         audiA8.getMechanics();
-         scodaFabia.getMechanics();
-         mapOfCarMechanicsVar2.put(audiA8, i);
-         mapOfCarMechanicsVar2.put(scodaFabia, i);
-        }
-        System.out.println(mapOfCarMechanicsVar2);
+//        Map<Transport, Mechanic> mapOfCarMechanicsVar2 = new HashMap<>();
+//        for (Mechanic<?> i : Arrays.asList(Mechanic<Car>)) {
+//         audiA8.getMechanics();
+//         scodaFabia.getMechanics();
+//         mapOfCarMechanicsVar2.put(audiA8, i);
+//         mapOfCarMechanicsVar2.put(scodaFabia, i);
+//        }
+//        System.out.println(mapOfCarMechanicsVar2);
 
-       System.out.println("ВАРИАНТ 3 - задвоились механики" );
-        for (String s : Arrays.asList(
+
+
+        System.out.println("\nВАРИАНТ 3 - как положить механиков в Map? ");
+        Map<Transport, Mechanic> mapOfCarMechanicsVar33 = new HashMap<>();
+        for (var s : Arrays.asList(
                 audiA8.getBrand() + " " + audiA8.getModel() + " " + audiA8.getMechanics(),
-                scodaFabia.getBrand() + " " + scodaFabia. getModel() + " " + scodaFabia.getMechanics())) {
+                scodaFabia.getBrand() + " " + scodaFabia.getModel() + " " + scodaFabia.getMechanics(),
+                hyundaiA201.getBrand() + " " + hyundaiA201.getModel() + " " + hyundaiA201.getMechanics(),
+                kamaz5460.getBrand() + " " + kamaz5460.getModel() + " " + kamaz5460.getMechanics()
+        )) {
             System.out.println(s);
+
+
+            for (Map.Entry<Transport, Mechanic> entry : mapOfCarMechanicsVar33.entrySet()) {
+                if (!mapOfCarMechanicsVar33.isEmpty()) {
+                    System.out.println(entry.getKey() + " : " + entry.getValue());
+                } else
+                    System.out.println("Map пустой");
+            }
         }
 
 
+        System.out.println("\nВАРИАНТ 4 - как положить механиков в Map? В значение никак не получается положить audiA8.getMechanics()");
+        Map<Transport, Mechanic> mapOfCarMechanicsVar44 = new HashMap<>();
+        //mapOfCarMechanicsVar44.put(audiA8, audiA8.getMechanics());
+        //mapOfCarMechanicsVar44.put(kamaz5460, kamaz5460.getMechanics());
 
-        Set<Mechanic> setOfMechanics = new HashSet<>();
-        setOfMechanics.add(bb);
-        setOfMechanics.add(pp);
-        setOfMechanics.add(vv);
-        setOfMechanics.add(mm);
-        // System.out.println("Множество механиков: " + setOfMechanics);
-
-        Set<Transport> setOfTransport = new HashSet<>();
-        setOfTransport.add(audiA8);
-        setOfTransport.add(scodaFabia);
-        //System.out.println("Множество а/м: " + setOfTransport);
-
-
-        // System.out.println( "механик " + Transport.getMechanics() + Transport.);
+        for (Map.Entry<Transport, Mechanic> entry : mapOfCarMechanicsVar44.entrySet()) {
+            System.out.println(entry.getKey() + " : " + entry.getValue());
+        }
     }
-
-
 }
 

@@ -1,10 +1,11 @@
 package carRace.transport;
 
-import carRace.Competing;
 import carRace.Transport;
 import carRace.carParameters.TypeOfCapacity;
 
-public class Bus extends Transport implements Competing {
+import java.util.Objects;
+
+public class Bus extends Transport implements Comparable {
     private TypeOfCapacity typeOfCapacity;
 
     public Bus(String brand,
@@ -25,47 +26,22 @@ public class Bus extends Transport implements Competing {
     }
 
     @Override
-    public void start() {
-        System.out.println("Успешный старт автобуса: ключ в зажигание вставлен, двигатель заведен");
+    public int compareTo(Object o) {
+        return 0;
     }
 
     @Override
-    public void finish() {
-        System.out.println("Успешный финиш автобуса: двигатель заглушен, ключ из замка зажигания извлечен");
-    }
-    @Override
-    public void printType() {
-        if (typeOfCapacity ==null) {
-            System.out.println("Данных по автобусу недостаточно");
-        } else {
-            System.out.println("Вместимость автобуса от " + typeOfCapacity.getFrom() + " до " + typeOfCapacity.getTo() + " мест.");
-        }
-    }
-    @Override
-    public void pitStop() {
-        System.out.println("Автобус: произведена техническая остановка, проверено техническое состояние");
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Bus bus = (Bus) o;
+        return typeOfCapacity == bus.typeOfCapacity;
     }
 
     @Override
-    public void lapTime() {
-        System.out.println("Лучшая скорость круга у автобуса");
-    }
-
-    @Override
-    public void maxSpeed() {
-        System.out.println("Максимальная скорость круга у автобуса");
-    }
-
-    @Override
-    public boolean service() {
-
-        System.out.println("Автобус " +getBrand() + " " + getModel() + " в диагностике не требуется");
-        return true;
-    }
-
-    @Override
-    public void repair() {
-        System.out.println("Автобус " + getBrand() + " " + getModel() + " починен" );
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), typeOfCapacity);
     }
 }
 

@@ -1,10 +1,11 @@
 package carRace.transport;
 
-import carRace.Competing;
 import carRace.Transport;
 import carRace.carParameters.TypeOfBody;
 
-public class Car extends Transport implements Competing {
+import java.util.Objects;
+
+public class Car extends Transport implements Comparable {
 
     private TypeOfBody typeOfBody;
 
@@ -26,48 +27,21 @@ public class Car extends Transport implements Competing {
     }
 
     @Override
-    public void start() {
-        System.out.println("Успешный старт машины: ключ в зажигание вставлен, двигатель заведен");
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Car car = (Car) o;
+        return typeOfBody == car.typeOfBody;
     }
 
     @Override
-    public void finish() {
-        System.out.println("Успешный финиш машины: двигатель заглушен, ключ из замка зажигания извлечен");
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), typeOfBody);
     }
 
     @Override
-    public void printType() {
-        if (typeOfBody ==null) {
-            System.out.println("Данных по авто недостаточно");
-        } else {
-            System.out.println("Тип кузова автомобиля: " + typeOfBody + ".");
-        }
+    public int compareTo(Object o) {
+        return 0;
     }
-
-    @Override
-    public void pitStop() {
-        System.out.println("Автомобиль: произведена техническая остановка, заменена шина");
-    }
-
-    @Override
-    public void lapTime() {
-        System.out.println("Лучшее время круга для автомобиля");
-    }
-
-    @Override
-    public void maxSpeed() {
-        System.out.println("Максимальная скорость круга для автомобиля");
-    }
-
-    @Override
-    public boolean service() {
-        return Math.random() > 0.7;
-    }
-
-    @Override
-    public void repair() {
-        System.out.println("Машина " + getBrand() + " " + getModel() + " починена" );
-    }
-
-
 }
